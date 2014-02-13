@@ -1,0 +1,30 @@
+curator:
+  curators:
+  - name: "primary"
+    connectionString: "localhost:2181"
+    exhibitorPort: 50001
+    exhibitors:
+      - "localhost"
+
+fooService:
+  port: 59742
+  uriSpec: "{scheme}://{address}:{port}"
+  description: "description test"
+
+server:
+  applicationConnectors:
+    - type: http
+      port: 59744
+
+  adminConnectors:
+    - type: http
+      port: 59745
+
+logging:
+  level: ERROR
+
+  loggers:
+    "com.robertcboll": TRACE
+
+  appenders:
+    - type: console

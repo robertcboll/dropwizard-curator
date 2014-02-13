@@ -1,0 +1,17 @@
+curator:
+  curators:
+  - name: "local"
+    connectionString: "localhost:2181"
+    default: true
+
+service:
+  description: "A sample discoverable service."
+
+logging:
+  level: INFO
+
+  loggers:
+    "com.robertcboll": DEBUG
+
+  appenders:
+    - type: console

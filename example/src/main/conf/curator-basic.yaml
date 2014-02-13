@@ -1,0 +1,13 @@
+curator:
+  curators:
+  - name: "local"
+    connectionString: "localhost:2181"
+
+logging:
+  level: INFO
+
+  loggers:
+    "com.robertcboll": DEBUG
+
+  appenders:
+    - type: console

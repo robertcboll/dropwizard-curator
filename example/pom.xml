@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.robertcboll.dropwizard</groupId>
+        <artifactId>dropwizard-service-parent</artifactId>
+        <version>0.1-SNAPSHOT</version>
+        <relativePath/>
+    </parent>
+
+    <artifactId>dropwizard-curator-example</artifactId>
+
+    <name>[Dropwizard Curator] Example</name>
+    <description/>
+
+    <properties>
+        <service.mainclass>com.robertcboll.dropwizard.curator.example.ExampleMain</service.mainclass>
+    </properties>
+
+    <dependencies>
+        <!-- dropwizard-curator -->
+        <dependency>
+            <groupId>com.robertcboll.dropwizard.curator</groupId>
+            <artifactId>dropwizard-curator-discovery</artifactId>
+            <version>0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

@@ -1,0 +1,28 @@
+curator:
+  curators:
+  - name: "test"
+    connectionString: "localhost:59741"
+    default: "true" # must also test for named "default"
+
+service:
+  port: 59742
+  uriSpec: "{scheme}://{address}:{port}"
+  description: "description test"
+
+server:
+  applicationConnectors:
+    - type: http
+      port: 59742
+
+  adminConnectors:
+    - type: http
+      port: 59743
+
+logging:
+  level: ERROR
+
+  loggers:
+    "com.robertcboll": TRACE
+
+  appenders:
+    - type: console
