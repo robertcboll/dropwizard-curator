@@ -12,8 +12,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
- *
- *
+ * Factory provided by {@link com.robertcboll.dropwizard.curator.config.CuratorConfiguration} for applications who
+ * use {@link com.robertcboll.dropwizard.curator.CuratorBundle}. Builds
+ * {@link org.apache.curator.framework.CuratorFramework} instances, manages them, and registers them with health checks
+ * and with the {@link com.robertcboll.dropwizard.curator.Curators} registry.
  */
 public class ManagedCuratorFactory {
     
@@ -37,6 +39,11 @@ public class ManagedCuratorFactory {
         this.curators = curators;
     }
 
+    /**
+     * Allows adding programmatically built {@link com.robertcboll.dropwizard.curator.CuratorInstance} instances for in
+     * depth configuration.
+     * @param instance the instance to manage
+     */
     public void addCurator(final CuratorInstance instance) {
         curators.add(instance);
     }

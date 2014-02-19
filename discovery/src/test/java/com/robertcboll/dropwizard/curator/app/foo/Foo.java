@@ -1,4 +1,4 @@
-package com.robertcboll.dropwizard.curator.foo;
+package com.robertcboll.dropwizard.curator.app.foo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.slf4j.Logger;

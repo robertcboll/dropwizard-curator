@@ -4,15 +4,19 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 import org.apache.curator.framework.CuratorFramework;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
 /**
- *
+ * A registry of all Curator instances registered during bootstrap and startup.
  */
 public class Curators {
+
+    private static final Logger log = LoggerFactory.getLogger(Curators.class);
 
     private static Curators INSTANCE;
 
@@ -26,7 +30,11 @@ public class Curators {
         this.curators = ImmutableMap.copyOf(local);
     }
 
-    public static void bootstrap(final Collection<ManagedCurator> curators) {
+    static void bootstrap(final Collection<ManagedCurator> curators) {
+        if (INSTANCE != null) {
+            log.warn("INSTANCE is being recreated, but was not null. This is unexpected, but not disallowed. If you " +
+                    "did not expect this message, check your configuration.");
+        }
         INSTANCE = new Curators(curators);
     }
 

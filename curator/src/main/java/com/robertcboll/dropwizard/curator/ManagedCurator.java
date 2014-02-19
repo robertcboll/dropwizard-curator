@@ -6,8 +6,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- *
- *
+ * A wrapper for {@link org.apache.curator.framework.CuratorFramework}, managing it through the dropwizard
+ * {@link io.dropwizard.lifecycle.Managed} lifecycle.
  */
 public class ManagedCurator implements Managed {
 

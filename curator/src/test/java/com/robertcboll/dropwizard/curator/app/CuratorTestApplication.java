@@ -2,7 +2,7 @@ package com.robertcboll.dropwizard.curator.app;
 
 
 import com.robertcboll.dropwizard.curator.CuratorBundle;
-import com.robertcboll.dropwizard.curator.foo.FooResource;
+import com.robertcboll.dropwizard.curator.app.foo.FooResource;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;

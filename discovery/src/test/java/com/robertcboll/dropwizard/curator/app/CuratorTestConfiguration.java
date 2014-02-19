@@ -4,7 +4,7 @@ import com.google.common.base.Optional;
 import com.robertcboll.dropwizard.curator.ManagedCuratorFactory;
 import com.robertcboll.dropwizard.curator.config.CuratorConfiguration;
 import com.robertcboll.dropwizard.curator.discovery.config.DiscoveryConfiguration;
-import com.robertcboll.dropwizard.curator.foo.FooService;
+import com.robertcboll.dropwizard.curator.app.foo.FooService;
 import io.dropwizard.Configuration;
 
 import javax.validation.Valid;

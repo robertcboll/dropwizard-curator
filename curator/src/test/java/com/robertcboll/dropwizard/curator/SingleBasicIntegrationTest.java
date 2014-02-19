@@ -1,38 +1,33 @@
 package com.robertcboll.dropwizard.curator;
 
-import com.google.common.base.Throwables;
 import com.google.common.io.Resources;
 import com.robertcboll.dropwizard.curator.app.CuratorTestApplication;
 import com.robertcboll.dropwizard.curator.app.CuratorTestConfiguration;
+import com.robertcboll.dropwizard.curator.rule.ZookeeperTestRule;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import io.dropwizard.testing.junit.DropwizardAppRule;
 import org.apache.curator.framework.CuratorFramework;
-import org.apache.curator.test.TestingServer;
-import org.junit.AfterClass;
 import org.junit.ClassRule;
 import org.junit.Test;
+import org.junit.rules.ExternalResource;
 
 import javax.ws.rs.core.MediaType;
-import java.io.IOException;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.junit.Assert.*;
 
-public class SingleBasicProviderTest {
-
-    private static final TestingServer zookeeper;
-    static {
-        try {
-            zookeeper = new TestingServer(59741);
-        } catch (Exception e) {
-            throw Throwables.propagate(e);
-        }
-    }
+public class SingleBasicIntegrationTest {
 
     @ClassRule
-    public static DropwizardAppRule<CuratorTestConfiguration> APP_RULE = new DropwizardAppRule<>(CuratorTestApplication.class,
+    public static ExternalResource ZK = new ZookeeperTestRule(59741);
+
+    @ClassRule
+    public static DropwizardAppRule<CuratorTestConfiguration> APP_RULE = new DropwizardAppRule<>(
+            CuratorTestApplication.class,
             Resources.getResource("curator-basic-single.yaml").getPath());
 
     @Test
@@ -75,20 +70,4 @@ public class SingleBasicProviderTest {
         curator.delete().forPath("/test");
         assertNull(curator.checkExists().forPath("/test"));
     }
-
-    @AfterClass
-    public static void stopZookeeper() throws IOException {
-        zookeeper.close();
-    }
-
-   /* @Test
-    public void testAdvertised() throws Exception {
-        try (ServiceProvider<FooService> provider = new FooService().provider(FooService.class)) {
-            provider.start();
-            ServiceInstance<FooService> instance = provider.getInstance();
-            assertNotNull("instance is not null", instance);
-            FooService service = instance.getPayload();
-            assertEquals("service description is correct", service.getDescription(), "description test");
-        }
-    }*/
 }

@@ -1,4 +1,4 @@
-package com.robertcboll.dropwizard.curator.foo;
+package com.robertcboll.dropwizard.curator.app.foo;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

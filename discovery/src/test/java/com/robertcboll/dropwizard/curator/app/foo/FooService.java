@@ -1,4 +1,4 @@
-package com.robertcboll.dropwizard.curator.foo;
+package com.robertcboll.dropwizard.curator.app.foo;
 
 import com.robertcboll.dropwizard.curator.discovery.DiscoverableService;
 import org.codehaus.jackson.annotate.JsonProperty;

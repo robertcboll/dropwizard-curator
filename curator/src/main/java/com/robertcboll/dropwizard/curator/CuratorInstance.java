@@ -20,12 +20,10 @@ import javax.validation.constraints.Min;
 import java.util.Collection;
 
 /**
- *
- *
+ * A wrapper for {@link org.apache.curator.framework.CuratorFramework} instances created and configured by
+ * {@link com.robertcboll.dropwizard.curator.ManagedCuratorFactory}.
  */
 public class CuratorInstance {
-
-    private final static Logger log = LoggerFactory.getLogger(CuratorInstance.class);
 
     private final static String EXHIBITOR_REST_ENDPOINT = "/exhibitor/v1/cluster/list";
 
@@ -131,6 +129,14 @@ public class CuratorInstance {
         this.exhibitors = exhibitors;
     }
 
+    /**
+     * Builds an instance of {@link com.robertcboll.dropwizard.curator.ManagedCurator} backed by a
+     * {@link org.apache.curator.framework.CuratorFramework} based on the configuration, or the instance passed to the
+     * constructor. Part of this process involves registering health checks and registering with
+     * {@link com.robertcboll.dropwizard.curator.Curators}.
+     * @return an instance of {@link com.robertcboll.dropwizard.curator.ManagedCurator} backed by this instance's
+     * {@link org.apache.curator.framework.CuratorFramework}
+     */
     public ManagedCurator build() {
         final CuratorFramework instance = curator.or(buildCurator());
         return ManagedCurator.build(name, instance);
